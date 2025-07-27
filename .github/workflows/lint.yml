@@ -1,7 +1,10 @@
 name: Linting a turborepo
+
 on:
   pull_request:
-    branches: -"**"
+    branches:
+      - "**"
+
 jobs:
   lint:
     name: Lint and format check
@@ -15,7 +18,7 @@ jobs:
         with:
           node-version: "18"
 
-      - name: stepup Yarn
+      - name: Setup Yarn
         run: npm install -g yarn
 
       - name: Install dependencies
