@@ -1,0 +1,31 @@
+name: Linting a turborepo
+on:
+  pull_request:
+    branches: -"**"
+jobs:
+  lint:
+    name: Lint and format check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: stepup Yarn
+        run: npm install -g yarn
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run lint
+        run: yarn lint
+
+      - name: Run format check
+        run: yarn format:check
+
+      - name: Build project
+        run: yarn build
